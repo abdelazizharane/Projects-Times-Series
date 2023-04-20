@@ -1,10 +1,11 @@
 ### Chargement des librairies pour l'étude de séries ###
+
 library(readxl)
 library(tseries)
 library(urca)
 library(forcats)
 library(ggplot2)
-data <- read_excel("Time-Series/R_ST_TP/base_des_données.xlsx")
+data <- read_excel("base_des_données.xlsx")
 View(data)
 data1 = ts(data, start=1991, end=2020, class = "ts", frequency = 1)
 View(data1)
@@ -137,13 +138,16 @@ plot(prevision,plot.type ="single") # representation de prevision
 View(prevision)
 ########### TESTS DE DIAGNOSTIC ########
 ## Test de normalité 
+
 normalitytest <- normality.test(estimation)
 summary(normalitytest)
 plot(normalitytest)
+
 ## Test ARCH
 archtest <- arch.test(estimation)
 summary(archtest)
 plot(archtest)
+
 ## test de correlation en série
 serialtest <- serial.test(estimation)
 plot(serialtest)
